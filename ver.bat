@@ -1,3 +1,3 @@
-set ver=3.00.1011 (1A996)
-set osdata=Official
-set ver2=23H1
+set ver=3.50 (1b479720dev)
+set osdata=Dev
+set ver2=23H2
