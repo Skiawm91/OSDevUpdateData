@@ -302,7 +302,7 @@ echo ===========================================
 echo :        :                                :
 echo :        :                %date% :
 echo :        :                                :
-call Button 1 13 %buttonc% "Menu" 35 9 %buttonc% "<-" 1 4 %buttonc% "Update" 1 8 %buttonc% "Set Channel" X _Var_Box _Var_Hover
+call Button 1 13 %buttonc% "Menu" 35 9 %buttonc% "<-" 1 4 %buttonc% "Update" 1 8 %buttonc% "Set Channel" 12 4 %buttonc% "AutoUpdate | %auinfo%" X _Var_Box _Var_Hover
 %getbutton% /M %_Var_Box% /H %_Var_Hover%
 goto preupdate%errorlevel%
 
@@ -318,6 +318,13 @@ goto update
 
 :preupdate4
 goto channelupdate
+
+:preupdate5
+cd ..\..\etc
+if %auinfo% == OFF (echo set auinfo=ON >> config.bat) else (echo set auinfo=OFF >> config.bat)
+call config.bat
+cd ..\OneOS\System32
+goto preupdate
 
 :channelupdate
 if %themelod% == 07 (set buttonc=70) else (set buttonc=07)
@@ -406,7 +413,7 @@ echo ========================================
 goto updates
 
 :updates
-timeout /t 4 >nul 2>nul
+timeout /t 2 /nobreak >nul 2>nul
 cd temp
 set rnd=update%random%%random%
 md %rnd%
@@ -505,7 +512,7 @@ echo :                                      :
 echo :                                      :
 echo :                                      :
 echo ========================================
-timeout /t 5 >nul 2>nul
+timeout /t 1 /nobreak >nul 2>nul
 echo Temp > NowUpdate.tmp
 cd SoftwareUpdate
 md OSUpdateData
