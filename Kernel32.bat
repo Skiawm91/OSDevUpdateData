@@ -47,6 +47,7 @@ set copyorno=此系統沒有完成OOBE
 set channel=Official
 set oscp= 
 set oscpyu=false
+set auinfo=OFF
 
 ::系統初始階段，啟動過程::
 
@@ -61,10 +62,17 @@ set wget=C:\SakuraPC\Systems\GPT\OneOS\Storage\OneOS\System32\wget.exe
 cd ..\..\etc
 if NOT EXIST config.bat (goto oldinfobat) else (call sakos.bat)
 cls
+if %auinfo% == ON (goto autoupdate)
 if EXIST dev (goto fastboot) else (goto boot)
 
 :oldinfobat
 if not exist info.bat (goto setup) else (call sakosv3.bat)
+
+:autoupdate
+cd ..\OneOS\System32
+start AutoUpdate.bat
+cd ..\..\etc
+if EXIST dev (goto fastboot) else (goto boot)
 
 :fastboot
 goto loginmenu
@@ -106,27 +114,16 @@ cls
 echo 安裝程式正在開啟...
 timeout /t 3 >Nul
 cls
-echo 合約條款 (更新於2023年5月25日)
+echo 合約條款 (更新於2023年7月23日)
 echo =======================================
-echo 本系統未完成，此系統供嘗鮮
-echo 如果您要使用本系統執行二創
-echo 請經過Sakura inc.內部人員的同意二創
-echo 如 Skiawm91#4429
-echo OneOS的功能有的繼承於SakuraOSv2
-echo 而SakuraOSv2可二創
-echo 所以您大可使用SakuraOSv2二創
 echo 如果您只想使用系統的話
 echo 請閱讀以下條款
 echo 當您遇到Bug，您可以提交
 echo 而您也必須遵守以下要求
-echo 1.您必須要有Windows_NT內核的Windows版本
-echo 2.您的系統也需要支援GIT，否則您無法更新
-echo 3.您必須安裝Git
-echo 還有，若您想體驗完整功能
-echo 需要購買金鑰！
-echo 偷偷告訴內部員工，如果你罷工可能會被開除
+echo 1.您必須要有WindowsNT內核的Windows版本
+echo 2.您的系統需要支援Wget
 echo =======================================
-call Button 14 20 F0 "I Accpet" 27 20 F0 "I Reject" X _Var_Box _Var_Hover
+call Button 14 9 F0 "I Accpet" 27 9 F0 "I Reject" X _Var_Box _Var_Hover
 GetInput /M %_Var_Box% /H %_Var_Hover%
 goto rule%errorlevel%
 
@@ -333,7 +330,7 @@ goto start
 :reset
 cd ..\OneOS\System32
 cd Drivers
-echo set gpu=SkHol Basic Graphics 1000 > GPU.bat
+echo set gpu=SkHol Graphics > GPU.bat
 cd ..
 start Kernel32.bat
 exit
@@ -350,7 +347,7 @@ echo.
 echo.     
 echo.
 echo.
-timeout /t 3 >nul 2>nul
+timeout /t 1 /nobreak >nul 2>nul
 cls
 echo.   
 echo.    %logo%
@@ -360,7 +357,7 @@ echo.
 echo     .
 echo.
 echo.
-timeout /t 1 >nul 2>nul
+timeout /t 1 /nobreak >nul 2>nul
 cls
 echo.   
 echo.    %logo%
@@ -370,7 +367,7 @@ echo.
 echo     ..
 echo.
 echo.
-timeout /t 1 >nul 2>nul
+timeout /t 1 /nobreak >nul 2>nul
 cls
 echo.   
 echo.    %logo%
@@ -380,7 +377,7 @@ echo.
 echo     ...
 echo.
 echo.
-timeout /t 1 >nul 2>nul
+timeout /t 1 /nobreak >nul 2>nul
 cls
 echo.   
 echo.    %logo%
@@ -390,7 +387,7 @@ echo.
 echo     ....
 echo.
 echo.
-timeout /t 1 >nul 2>nul
+timeout /t 1 /nobreak >nul 2>nul
 cls
 echo.   
 echo.    %logo%
@@ -400,7 +397,7 @@ echo.
 echo     .
 echo.
 echo.
-timeout /t 1 >nul 2>nul
+timeout /t 1 /nobreak >nul 2>nul
 cls
 echo.   
 echo.    %logo%
@@ -410,7 +407,7 @@ echo.
 echo     ..
 echo.
 echo.
-timeout /t 1 >nul 2>nul
+timeout /t 1 /nobreak >nul 2>nul
 cls
 echo.   
 echo.    %logo%
@@ -420,7 +417,7 @@ echo.
 echo     ...
 echo.
 echo.
-timeout /t 1 >nul 2>nul
+timeout /t 1 /nobreak >nul 2>nul
 cls
 echo.   
 echo.    %logo%
@@ -430,7 +427,7 @@ echo.
 echo     ....
 echo.
 echo.
-timeout /t 1 >nul 2>nul
+timeout /t 1 /nobreak >nul 2>nul
 cls
 echo.   
 echo.    %logo%
@@ -440,7 +437,7 @@ echo.
 echo     .
 echo.
 echo.
-timeout /t 1 >nul 2>nul
+timeout /t 1 /nobreak >nul 2>nul
 cls
 echo.   
 echo.    %logo%
@@ -450,7 +447,7 @@ echo.
 echo     ..
 echo.
 echo.
-timeout /t 1 >nul 2>nul
+timeout /t 1 /nobreak >nul 2>nul
 cls
 echo.   
 echo.    %logo%
@@ -460,7 +457,7 @@ echo.
 echo     ...
 echo.
 echo.
-timeout /t 1 >nul 2>nul
+timeout /t 1 /nobreak >nul 2>nul
 cls
 echo.   
 echo.    %logo%
@@ -470,7 +467,7 @@ echo.
 echo     ....
 echo.
 echo.
-timeout /t 1 >nul 2>nul
+timeout /t 1 /nobreak >nul 2>nul
 cls
 echo.   
 echo.    %logo%
@@ -480,7 +477,7 @@ echo.
 echo     .
 echo.
 echo.
-timeout /t 1 >nul 2>nul
+timeout /t 1 /nobreak >nul 2>nul
 cls
 echo.   
 echo.    %logo%
@@ -490,7 +487,7 @@ echo.
 echo     ..
 echo.
 echo.
-timeout /t 1 >nul 2>nul
+timeout /t 1 /nobreak >nul 2>nul
 cls
 echo.   
 echo.    %logo%
@@ -500,9 +497,8 @@ echo.
 echo     ...
 echo.
 echo.
-timeout /t 1 >nul 2>nul
 cls
-timeout /t 3 >nul 2>nul
+timeout /t 2 /nobreak >nul 2>nul
 goto loginmenu
 
 ::登入畫面::
@@ -514,7 +510,7 @@ color %themelod%
 cls
 echo.
 echo.
-echo.        選擇使用者
+echo.       選擇使用者
 echo.
 echo.
 echo.
@@ -524,7 +520,7 @@ echo.
 echo.
 echo.
 echo.
-call %button% 7 5 %buttonc% "%user1%" 9 9 %buttonc% "User" X _Var_Box _Var_Hover
+call %button% 7 5 %buttonc% "%user1%" 8 9 %buttonc% "User" X _Var_Box _Var_Hover
 %getbutton% /M %_Var_Box% /H %_Var_Hover%
 goto login%errorlevel%
 
@@ -631,8 +627,33 @@ echo.
 echo.
 echo.
 echo.
-echo.                           通道: %osdata%
-echo.                           OneOS版本: %ver2%
+echo.
+echo.
+echo ===========================================
+echo :        :                                :
+echo :        :                %date% :
+echo :        :                                :
+call Button 1 14 %buttonc% "Menu" 1 1 %buttonc% "Logout" 1 5 %buttonc% "Restart" 1 9 %buttonc% "PowerOFF"  X _Var_Box _Var_Hover
+%getbutton% /M %_Var_Box% /H %_Var_Hover%
+goto desktop%errorlevel%
+
+:comandupdate
+if %themelod% == 07 (set buttonc=70) else (set buttonc=07)
+color %themelod%
+cls
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.               新的更新已完成，需要重新啟動！
 echo ===========================================
 echo :        :                                :
 echo :        :                %date% :
@@ -716,7 +737,7 @@ goto calc
 goto cp
 
 :start5
-goto comand
+if exist NowUpdate.tmp (goto comandupdate) else (goto comand)
 
 :start6
 goto intexp
