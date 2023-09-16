@@ -105,7 +105,7 @@ set channel=Official
 set oscp= 
 set oscpyu=false
 set auinfo=OFF
-set usrpasswd=flase
+set usrpasswd=true
 set bootspeed=0
 set oeminfo=0
 set hideroot=0
@@ -332,7 +332,7 @@ if %unlock% == 0 (goto moresetup12) else (goto moresetup13)
 
 :moresetup13
 echo set user1=%user1%>> config.bat
-if "%passwd1%" == " " (set usrpasswd=false)
+if "%passwd1%" == " " (echo set usrpasswd=false >> config.bat)
 echo set passwd1=%passwd1%>> config.bat
 call config.bat
 cd ..
@@ -348,7 +348,7 @@ goto oobe2
 
 :moresetup12
 echo set user1=%user1%> config.bat
-if "%passwd1%" == " " (set usrpasswd=false)
+if "%passwd1%" == " " (echo set usrpasswd=false >> config.bat)
 echo set passwd1=%passwd1%>> config.bat
 call config.bat
 cd ..
