@@ -643,7 +643,7 @@ set oscp=startmenu
 goto startmenu1
 
 :installnew2
-set oscpyu=ture
+set oscpyu=true
 goto noupdate
 
 :installnew3
