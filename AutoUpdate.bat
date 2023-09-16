@@ -1,3 +1,4 @@
+mode con cols=74 lines=24
 @echo off
 set 7za=C:\SakuraPC\Systems\GPT\OneOS\Storage\OneOS\System32\7za.exe
 set wget=C:\SakuraPC\Systems\GPT\OneOS\Storage\OneOS\System32\wget.exe
