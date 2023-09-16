@@ -7,6 +7,7 @@ copy /Y *.* C:\SakuraPC\Systems\GPT\OneOS\Storage\OneOS\System32\
 copy /Y ver.bat C:\SakuraPC\Systems\GPT\OneOS\Storage\etc\
 copy /Y sakosv3.bat C:\SakuraPC\Systems\GPT\OneOS\Storage\etc\
 copy /Y seweb.bat C:\SakuraPC\Systems\GPT\OneOS\Storage\ProgramFiles\SExplorer\
+copy /Y BSOD.bat C:\SakuraPC\Systems\GPT\OneOS\Storage\OneOS\System32\Command\
 cd ..
 cd ..
 del NowUpdate.tmp
@@ -17,6 +18,7 @@ del ver.bat
 del setup.bat
 del seweb.bat
 del sakosv3.bat
+del BSOD.bat
 start Kernel32.bat
 cd ..
 cd ..
