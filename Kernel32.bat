@@ -138,7 +138,7 @@ if not exist info.bat (goto setup) else (call sakosv3.bat)
 
 :autoupdate
 cd ..\OneOS\System32
-start AutoUpdate.bat _
+start/min AutoUpdate.bat
 cd ..\..\etc
 if EXIST dev (goto fastboot) else (goto boot)
 
