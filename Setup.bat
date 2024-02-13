@@ -1,28 +1,32 @@
 @echo off
-echo Updateing...
-echo.
-cls
-echo Starting Update...
-copy /Y *.* C:\SakuraPC\Systems\GPT\OneOS\Storage\OneOS\System32\
+call ..\..\..\etc\ver.bat
+if "%majorver% lss "4" (goto formatinstall)
+if "%ver% == "4.00 (2a1556084dev)" (goto formatinstall)
+if "%ver% == "4.00 (2a1556085dev)" (goto formatinstall)
+goto normalinstall
+
+:formatinstall
+del /F /Q ..\*.*
+rmdir /S /Q Command
+copy /Y CoreLoader.bat C:\SakuraPC\Systems\GPT\OneOS\Storage\OneOS\System32\
+copy /Y *.core C:\SakuraPC\Systems\GPT\OneOS\Storage\OneOS\System32\
 copy /Y ver.bat C:\SakuraPC\Systems\GPT\OneOS\Storage\etc\
-copy /Y sakosv3.bat C:\SakuraPC\Systems\GPT\OneOS\Storage\etc\
+if exist ..\..\..\etc\sakosv3.bat (copy /Y sakosv3.bat C:\SakuraPC\Systems\GPT\OneOS\Storage\etc\)
 copy /Y seweb.bat C:\SakuraPC\Systems\GPT\OneOS\Storage\ProgramFiles\SExplorer\
-copy /Y BSOD.bat C:\SakuraPC\Systems\GPT\OneOS\Storage\OneOS\System32\Commands\
+copy /Y Bsod.bat C:\SakuraPC\Systems\GPT\OneOS\Storage\OneOS\System32\
 cd ..
-cd ..
-del NowUpdate.tmp
+del /F /Q NowUpdate.tmp
 echo temp > UpdateDone.tmp
-echo.
-timeout /t 3 /NOBREAK >nul
-del ver.bat
-del setup.bat
-del seweb.bat
-del sakosv3.bat
-del BSOD.bat
-start Kernel32.bat
-cd ..
-cd ..
-cd etc
-if exist sakos.bat (del sakosv3.bat)
 exit
 
+:normalinstall
+copy /Y CoreLoader.bat C:\SakuraPC\Systems\GPT\OneOS\Storage\OneOS\System32\
+copy /Y *.core C:\SakuraPC\Systems\GPT\OneOS\Storage\OneOS\System32\
+copy /Y ver.bat C:\SakuraPC\Systems\GPT\OneOS\Storage\etc\
+if exist ..\..\..\etc\sakosv3.bat (copy /Y sakosv3.bat C:\SakuraPC\Systems\GPT\OneOS\Storage\etc\)
+copy /Y seweb.bat C:\SakuraPC\Systems\GPT\OneOS\Storage\ProgramFiles\SExplorer\
+copy /Y Bsod.bat C:\SakuraPC\Systems\GPT\OneOS\Storage\OneOS\System32\
+cd ..
+del /F /Q NowUpdate.tmp
+echo temp > UpdateDone.tmp
+exit
