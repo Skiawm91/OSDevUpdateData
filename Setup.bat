@@ -1,8 +1,8 @@
 @echo off
 call ..\..\..\etc\ver.bat
-if "%majorver% lss "4" (goto formatinstall)
-if "%ver% == "4.00 (2a1556084dev)" (goto formatinstall)
-if "%ver% == "4.00 (2a1556085dev)" (goto formatinstall)
+if "%majorver%" lss "4" (goto formatinstall)
+if "%ver%" == "4.00 (2a1556084dev)" (goto formatinstall)
+if "%ver%" == "4.00 (2a1556085dev)" (goto formatinstall)
 goto normalinstall
 
 :formatinstall
